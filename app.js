@@ -31,6 +31,15 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/default";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+});
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
