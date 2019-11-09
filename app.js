@@ -30,15 +30,8 @@ app.use('/fauna', faunaRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/default";
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-});
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/zoohack', {useNewUrlParser: true});
 
 // error handler
 app.use(function(err, req, res, next) {
