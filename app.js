@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routers
-var faunaRouter = require('./controllers/faunaController');
+var faunaRouter = require('./routes/faunaRouter');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
