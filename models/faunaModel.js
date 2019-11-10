@@ -28,7 +28,7 @@ faunaSchema.statics.getKeywords = function(tag, callback){
 
 faunaSchema.statics.findByKeywords = function(tag, keywords, callback){
   console.log("inside static function");
-  this.find({ AD_name: new RegExp(tag, "i")})
+  this.find({}).or({ AD_name: new RegExp(tag, "i")})
   .or({ Type_1: new RegExp(tag, "i")})
   .or({ Type_2: new RegExp(tag, "i")})
   .or({ Type_3: new RegExp(tag, "i")})
