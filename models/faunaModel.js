@@ -18,10 +18,6 @@ faunaSchema.statics.getKeywords = function(tag, callback){
   .or({ Type_2: new RegExp(tag, "i")})
   .or({ Type_3: new RegExp(tag, "i")})
   .then((data) => {
-    console.log('Ad_name', data.AD_name);
-    console.log("typeA", data.Type_1);
-    console.log("typeB", data.Type_2);
-    console.log("typeC", data.Type_3);
     callback(data);
   });
 };
