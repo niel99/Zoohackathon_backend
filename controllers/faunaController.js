@@ -23,6 +23,29 @@ exports.getKeywords = async (req, res) => {
     });
 };
 
+exports.getSpecies = async (req, res) => {
+    var type1 = await faunaModel.find({}, {Type_1: true}).distinct("Type_1").then((result) => {
+        return result;
+    });
+    var type2 = await faunaModel.find({}, {Type_2: true}).distinct("Type_2").then((result) => {
+        return result;
+    });
+    var type3 = await faunaModel.find({}, {Type_3: true}).distinct("Type_3").then((result) => {
+        return result;
+    });
+    var sendSpecies = [];
+    type1.forEach((element) => {
+        sendSpecies.push(element)
+    });
+    type2.forEach((element) => {
+        sendSpecies.push(element)
+    });
+    type3.forEach((element) => {
+        sendSpecies.push(element)
+    });
+    res.send(sendSpecies);
+}
+
 exports.findByKeywords = (req, res) => {
     console.log('body is', req.body);
     let tag = req.body.tag;
