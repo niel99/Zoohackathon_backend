@@ -13,11 +13,15 @@ var faunaSchema = new mongoose.Schema({
 
 faunaSchema.statics.getKeywords = function(tag, callback){
   console.log("inside static function");
-  this.find({ AD_name: new RegExp(tag, "i")})
+  this.find({}).or({ AD_name: new RegExp(tag, "i")})
   .or({ Type_1: new RegExp(tag, "i")})
   .or({ Type_2: new RegExp(tag, "i")})
   .or({ Type_3: new RegExp(tag, "i")})
   .then((data) => {
+    console.log('Ad_name', data.AD_name);
+    console.log("typeA", data.Type_1);
+    console.log("typeB", data.Type_2);
+    console.log("typeC", data.Type_3);
     callback(data);
   });
 };
